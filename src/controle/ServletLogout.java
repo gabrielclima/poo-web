@@ -1,4 +1,4 @@
-package controle.filme;
+package controle;
 
 import java.io.IOException;
 
@@ -7,21 +7,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import modelo.dao.FilmeDAO;
-import modelo.dominio.Filme;
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class ServletExcluirFilme
+ * Servlet implementation class ServletAbrirLogin
  */
-@WebServlet("/excluirFilme")
-public class ServletExcluirFilme extends HttpServlet {
+@WebServlet("/logout")
+public class ServletLogout extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ServletExcluirFilme() {
+    public ServletLogout() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,13 +28,11 @@ public class ServletExcluirFilme extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String registro = request.getParameter("registro");
-		FilmeDAO dao = new FilmeDAO();
-		Filme filme = dao.lerPorId(registro);
-		dao.excluir(filme);
-		
-		request.getRequestDispatcher("filme/exibirCadastroFilmes").forward(request, response);
-	}	
+		request.setAttribute("mensagem", "Muito obrigado por sua visita. <br>Volte sempre.");
+		HttpSession session = request.getSession(true);
+		session.invalidate();
+		request.getRequestDispatcher("login.jsp").forward(request, response);
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -29,6 +29,9 @@
 		</tr>
 	</table>
 	<p class="tituloCampo">Olá, Administrador!, o registro do usuário <%=gerente.getNome()%> foi confirmado.</p>
+	<br>
+	<br>
+	<a href="logout">Sair</a>
 </body>
 </html>
 

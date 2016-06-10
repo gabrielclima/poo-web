@@ -68,6 +68,9 @@ function validar()
 			</tr>
 		</table>
 	</form>
+	<br>
+	<br>
+	<a href="logout">Sair</a>
 </body>
 </html>
 

@@ -52,11 +52,31 @@ public class ServletSalvarUsuario extends HttpServlet {
 		String cpf 				= request.getParameter("cpf");
 		String dataNascimento 	= request.getParameter("dataNascimento");
 		
-		Object user;
+		boolean dadosOK = true;
+		String pagina = null;
+		String mensagem = null;
 
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
 		Date data;
+		
+		if (dadosOK) {
+			ClienteDAO clienteDao = new ClienteDAO();
+			Cliente cliente = clienteDao.obterPorLogin(login);
+			
+			if (cliente != null) {
+				dadosOK = false;
+				mensagem = "Já temos um cliente com esse login!";
+			}
+		
+			GerenteDAO gerenteDao = new GerenteDAO();
+			Gerente gerente = gerenteDao.obterPorLogin(login);
+			
+			if (gerente != null) {
+				dadosOK = false;
+				mensagem = "Já temos um gerente com esse login!";
+			}
+		}
 		
 		try {
 			data = format.parse(dataNascimento);
@@ -64,35 +84,36 @@ public class ServletSalvarUsuario extends HttpServlet {
 			data = null;
 		}
 		
-		if (login.equals("admin")) {
-			Gerente gerente = new Gerente(login, senhaConf, nome, cpf, data);			
-			user = gerente;
-		} else {
-			Cliente cliente = new Cliente(login, senhaConf, nome, cpf, data);			
-			user = cliente;
-		}
-		
-		boolean dadosOK = true;
-		String pagina = null;
-		String mensagem = null;
-		
 		if (!senha.equals(senhaConf)) {
 			dadosOK = false;
 			mensagem = "As senhas devem ser iguais.";
 		}
 		
 		if (dadosOK){
-			if(user.getClass().getSimpleName().equals("Gerente")){
+			if(login.equals("admin")){
+				Gerente gerente = new Gerente();
+				gerente.setLogin(login);
+				gerente.setSenha(senhaConf);
+				gerente.setNome(nome);
+				gerente.setCpf(cpf);
+				gerente.setDataNascimento(data);
+				gerente.setAdmin(true);
+				
 				pagina = "gerente/confirmacao-registro-gerente.jsp";
 				GerenteDAO dao = new GerenteDAO();
-				Gerente gerente = (Gerente) user;
 				dao.salvar(gerente);
 				request.setAttribute("gerente", gerente);
 			}			
-			if(user.getClass().getSimpleName().equals("Cliente")){
+			else{
+				Cliente cliente = new Cliente();
+				cliente.setLogin(login);
+				cliente.setSenha(senhaConf);
+				cliente.setNome(nome);
+				cliente.setCpf(cpf);
+				cliente.setDataNascimento(data);
+				
 				pagina = "cliente/confirmacao-registro-cliente.jsp";
 				ClienteDAO dao = new ClienteDAO();
-				Cliente cliente = (Cliente) user;
 				dao.salvar(cliente);
 				request.setAttribute("cliente", cliente);
 			}
@@ -107,5 +128,5 @@ public class ServletSalvarUsuario extends HttpServlet {
 
 		disp.forward(request, response);
 	}
-
+	
 }

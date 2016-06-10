@@ -9,9 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.dao.ClienteDAO;
-import modelo.dao.FilmeDAO;
 import modelo.dominio.Cliente;
-import modelo.dominio.Filme;
 
 /**
  * Servlet implementation class ServletAbrirCadastro

@@ -66,11 +66,11 @@ public class ServletAutenticarUsuario extends HttpServlet {
 			if (user.getClass().getSimpleName().equals("Gerente")) {				
 				request.getRequestDispatcher("painel-admin.jsp").forward(request, response);
 			} else {
-				request.getRequestDispatcher("filme/catalogo-filmes.jsp").forward(request, response);
+				request.getRequestDispatcher("exibirCatalogo").forward(request, response);
 			}
 		}
 		else{
-			request.setAttribute("mensagem", "Login ou Senha inv�lida.");
+			request.setAttribute("mensagem", "Login ou Senha inválida.");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}

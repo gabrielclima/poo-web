@@ -1,12 +1,20 @@
 package modelo.dominio;
 
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "clientes")
 public class Cliente {
 	
 	@Id
@@ -22,19 +30,11 @@ public class Cliente {
 	private Date dataNascimento;
 	private boolean admin;
 	
+    @OneToMany(mappedBy="cliente", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Locacao> locacao;
+	
 	public Cliente() {
 		super();
-	}
-
-	public Cliente(String login, String senha, String nome, String cpf, Date dataNascimento) {
-		super();
-		this.id = id;
-		this.login = login;
-		this.senha = senha;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
-		this.admin = false;
 	}
 
 	public int getId() {

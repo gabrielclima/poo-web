@@ -12,5 +12,8 @@
 	<a href="exibirCadastroClientes">Cadastro Clientes</a>
 	<br>
 	<a href="exibirCadastroGerentes">Cadastro Gerentes</a>
+	<br>
+	<br>
+	<a href="logout">Sair</a>
 </body>
 </html>

@@ -2,9 +2,16 @@ package modelo.dominio;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -12,12 +19,18 @@ import javax.persistence.Table;
 public class Filme {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_FILME")
+	@SequenceGenerator(name = "ID_FILME", sequenceName = "SEQ_ID_FILME",
+	                    allocationSize = 1, initialValue=1)
 	private int registro;
 	private String nomeFilme;
 	private String descricao;
 
 	private Date dataLancamento;
 	private String categoria;
+	
+	@OneToMany(mappedBy="filme", cascade = CascadeType.ALL, fetch= FetchType.LAZY)
+	private List<Locacao> locacao;
 	
 	public Filme(String nomeFilme, String descricao, Date dataLancamento, String categoria) {
 		super();

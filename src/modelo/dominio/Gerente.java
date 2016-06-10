@@ -2,11 +2,15 @@ package modelo.dominio;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="gerentes")
 public class Gerente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ID_GERENTE")
@@ -21,17 +25,10 @@ public class Gerente {
 	private Date dataNascimento;
 	private boolean admin;
 	
-	public Gerente(String login, String senha, String nome, String cpf, Date dataNascimento) {
+	public Gerente() {
 		super();
-		this.id = id;
-		this.login = login;
-		this.senha = senha;
-		this.nome = nome;
-		this.cpf = cpf;
-		this.dataNascimento = dataNascimento;
-		this.admin = true;
 	}
-
+	
 	public int getId() {
 		return id;
 	}

@@ -49,6 +49,9 @@
 			<td><%=cliente.getDataNascimento()%></td>
 		</tr>
 	</table>
+	<br>
+	<br>
+	<a href="logout">Sair</a>
 </body>
 </html>
 

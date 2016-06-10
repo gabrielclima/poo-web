@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import modelo.dao.FilmeDAO;
 import modelo.dao.GerenteDAO;
-import modelo.dominio.Filme;
 import modelo.dominio.Gerente;
 
 /**

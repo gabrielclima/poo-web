@@ -31,6 +31,9 @@
 	<p class="tituloCampo">Olá, <%=cliente.getNome()%>. Seu registro foi confirmado.</p>
 	<br>
 	<a href="abrirLogin">Logar</a>
+	<br>
+	<br>
+	<a href="logout">Sair</a>
 </body>
 </html>
 

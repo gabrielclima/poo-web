@@ -39,9 +39,11 @@ public class ServletAlugarFilme extends HttpServlet {
 		Cliente cliente = (Cliente) session.getAttribute("usuario");
 				
 		FilmeDAO dao = new FilmeDAO();
-		Filme filme = dao.lerPorId(registro);
+		Filme filme = dao.lerPorId(Integer.parseInt(registro));
 		
-		Locacao locacao = new Locacao(cliente, filme);		
+		Locacao locacao = new Locacao();
+		locacao.setCliente(cliente);
+		locacao.setFilme(filme);
 		LocacaoDAO locacaoDao = new LocacaoDAO();
 		locacaoDao.salvar(locacao);			
 		

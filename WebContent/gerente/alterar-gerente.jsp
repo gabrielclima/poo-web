@@ -68,6 +68,10 @@ function validar()
 			</tr>
 		</table>
 	</form>
+	<a href="exibirPainelAdmin">Voltar a Página de Administração</a>
+	<br>
+	<br>
+	<a href="logout">Sair</a>
 </body>
 </html>
 

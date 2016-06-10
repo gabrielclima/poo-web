@@ -1,9 +1,12 @@
 package modelo.dominio;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,17 +19,20 @@ public class Locacao {
 	@SequenceGenerator(name = "id_registro", sequenceName = "SEQ_registro",
 	                    allocationSize = 1, initialValue=1)
 	private int registro;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="ID_CLIENTE")
 	private Cliente cliente;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="ID_FILME")
 	private Filme filme;
 	
-	public Locacao(Cliente cliente, Filme filme) {
+	public Locacao() {
 		super();
-		this.cliente = cliente;
-		this.filme = filme;
-		this.registro = registro;
 	}
 
-	public Filme getFilme() {
+	public Filme getFilme(Cliente cliente, Filme filme) {
 		return filme;
 	}
 
