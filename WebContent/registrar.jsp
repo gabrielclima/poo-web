@@ -13,7 +13,6 @@
 }
 </style>
 
-<jsp:useBean id="usuario" class="modelo.dominio.Usuario" scope="request"></jsp:useBean>
 </head>
 <%
 	String mensagem = (String) request.getAttribute("mensagem");

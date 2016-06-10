@@ -54,23 +54,23 @@ public class ServletAutenticarUsuario extends HttpServlet {
 		}
 		
 		if (user == null){
-			request.setAttribute("mensagem", "Usuário não existe.");
+			request.setAttribute("mensagem", "UsuÃ¡rio nÃ£o existe.");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 		
-		if (senha.equals("123")){
+		if (senha != "" && senha != null){
 			
 			HttpSession session = request.getSession(true);
 			session.setAttribute("usuario", user);
 			
-			if (user.getClass().getSimpleName().equals("Gerente")) {
+			if (user.getClass().getSimpleName().equals("Gerente")) {				
 				request.getRequestDispatcher("painel-admin.jsp").forward(request, response);
 			} else {
 				request.getRequestDispatcher("filme/catalogo-filmes.jsp").forward(request, response);
 			}
 		}
 		else{
-			request.setAttribute("mensagem", "Login ou Senha inválida.");
+			request.setAttribute("mensagem", "Login ou Senha invï¿½lida.");
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 		}
 	}

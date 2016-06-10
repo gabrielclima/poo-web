@@ -28,7 +28,7 @@ public class GerenteDAO extends JpaDAO<Gerente> {
 		try {
 			retorno = query.getSingleResult();
 		} catch (Exception e) {
-		//	retorno = null;
+			e.printStackTrace();
 		}
 		
 		return retorno;

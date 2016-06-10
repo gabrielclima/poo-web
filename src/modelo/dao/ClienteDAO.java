@@ -20,7 +20,7 @@ public class ClienteDAO extends JpaDAO<Cliente> {
 	{
 		Cliente retorno = null;
 		
-		String comando = "from Gerente c where c.login = :paramLogin";
+		String comando = "from Cliente c where c.login = :paramLogin";
 		TypedQuery<Cliente> query = this.getEntityManager().createQuery(comando, Cliente.class);
 		
 		query.setParameter("paramLogin", login);

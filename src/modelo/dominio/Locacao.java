@@ -1,7 +1,10 @@
 package modelo.dominio;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -9,6 +12,9 @@ import javax.persistence.Table;
 public class Locacao {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_registro")
+	@SequenceGenerator(name = "id_registro", sequenceName = "SEQ_registro",
+	                    allocationSize = 1, initialValue=1)
 	private int registro;
 	private Cliente cliente;
 	private Filme filme;
