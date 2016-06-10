@@ -11,8 +11,7 @@
 </head>
 <body>
 	<h3>Cadastro de Clientes</h3>
-	Opções: <a href="abrirCadastro">Incluir</a>
-	
+	Opções: <a href="abrirCadastroCliente">Incluir</a>
 	<br>
 	<br>
 	Lista de Clientes:

@@ -11,8 +11,7 @@
 </head>
 <body>
 	<h3>Cadastro de Gerentes</h3>
-	Opções: <a href="abrirCadastro">Incluir</a>
-	
+
 	<br>
 	<br>
 	Lista de Gerentes:

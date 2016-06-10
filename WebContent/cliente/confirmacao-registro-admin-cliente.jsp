@@ -28,9 +28,12 @@
 			<td><%=cliente.getNome()%></td>
 		</tr>
 	</table>
-	<p class="tituloCampo">Olá, <%=cliente.getNome()%>. Seu registro foi confirmado.</p>
+	<p class="tituloCampo">Olá, gerente. O registro de <%=cliente.getNome()%> foi efetuado com sucesso.</p>
 	<br>
-	<a href="logout">Sair</a>
+	<br>
+	<a href="exibirPainelAdmin">Voltar a Página de Administração</a>
+	<br>
+	<br>
 </body>
 </html>
 
